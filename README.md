@@ -1,2 +1,2 @@
-ZF2-NAVIGATION
+ZF2-NAVIGATION Module
 ==============
