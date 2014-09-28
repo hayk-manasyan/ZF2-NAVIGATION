@@ -1,0 +1,75 @@
+<?php
+
+return array(
+    'controllers' => array(
+        'invokables' => array(
+            'Menu\Controller\Manage' => 'Menu\Controller\ManageController',
+//            'User\Controller\Register' => 'User\Controller\RegisterController',
+//            'User\Controller\Login' => 'User\Controller\LoginController',
+//            'User\Controller\UserManager' => 'User\Controller\UserManagerController',
+//            'User\Controller\UploadManager' => 'User\Controller\UploadManagerController',
+        ),
+    ),
+    'router' => array(
+        'routes' => array(
+            'menu' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/menu',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Menu\Controller',
+                        'controller' => 'Manage',
+                        'action' => 'index'
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(),
+                        ),
+                    ),
+                    'manage' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/manage[/:action[/:id]]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'Menu\Controller\Manage',
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+//                    'upload-manager' => array(
+//                        'type' => 'Segment',
+//                        'options' => array(
+//                            'route' => '/upload-manager[/:action[/:id]]',
+//                            'constraints' => array(
+//                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                                'id' => '[a-zA-Z0-9_-]*',
+//                            ),
+//                            'defaults' => array(
+//                                'controller' => 'User\Controller\UploadManager',
+//                                'action' => 'index',
+//                            ),
+//                        ),
+//                    ),
+                ),
+            ),
+        ),
+    ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'menu' => __DIR__ . '/../view',
+        ),
+    ),
+);

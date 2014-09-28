@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h4 class="text-center text-info">Menu list</h4>
+    </div>
+</div>
+<div class="row">
+    <?php if ($this->errorMessage) : ?>
+        <div class="col-md-4 col-md-offset-4 alert alert-danger"><?php echo $this->errorMessage; ?></div>
+    <?php elseif (null != $this->menuList && 0 != count ($this->menuList)) : ?>
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>Menu ID</th>
+                <th>Menu Name</th>
+                <th>Menu Label</th>
+                <th>Uri</th>
+                <th>Route</th>
+                <th>Icon</th>
+                <th>Parent Menu Id</th>
+                <td>&nbsp;</td>
+            </tr>
+            <?php foreach ($this->menuList as $menu) : ?>
+                <tr>
+                    <td><?php echo $menu->menu_id; ?></td>
+                    <td><?php echo $menu->name; ?></td>
+                    <td><?php echo $menu->label; ?></td>
+                    <td><?php echo $menu->uri; ?></td>
+                    <td><?php echo $menu->route; ?></td>
+                    <td><?php echo $menu->icon; ?></td>
+                    <td><?php echo $menu->parent_menu_id; ?></td>
+                    <td><a href="<?php echo $this->basePath () . '/menu/manage/edit/' . $menu->menu_id; ?>">
+                            Edit <span class="glyphicon glyphicon-pencil"></span></a> | 
+                        <a href="#" class="delete" data-toggle="modal" data-target="#alertModal" 
+                           data-url = "<?php echo $this->basePath () . '/menu/manage/delete/' . $menu->menu_id; ?>">
+                            Delete <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table> 
+        <h5 class="">
+            <a href="<?php echo $this->basePath () . '/menu/manage/create' ?>" >Click here</a> to create new menu item.
+        </h5> 
+    <?php else: ?>
+        <h5 class="text-center text-danger">
+            There is no menu. <a href="<?php echo $this->basePath () . '/menu/manage/create' ?>">Click here</a> to create new menu items.
+        </h5> 
+
+    <?php endif; ?>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center text-info">Are you sure to delete the menu item?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="#" id="deleteMenuItem" class="btn btn-primary" >Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.delete').on('click', function () {
+            var href = $(this).attr('data-url');
+            $('#alertModal').find('#deleteMenuItem').attr('href', href);
+        });
+    });
+</script>

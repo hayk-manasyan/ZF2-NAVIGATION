@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h4 class="text-center text-primary">Create new menu item!</h4>
+    </div>
+</div>
+<?php
+$form = $this->form;
+$form->prepare();
+?>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 ">
+        <?php echo $this->form()->openTag($form); ?>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="name"><?php echo $this->formLabel($form->get('name')); ?></label>
+                <div class="input-group">
+                    <?php
+                    echo $this->formElement($form->get('name'));
+                    echo $this->formElementErrors($form->get('name'));
+                    ?>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="label"><?php echo $this->formLabel($form->get('label')); ?></label>
+                <div class="input-group">
+                    <?php
+                    echo $this->formElement($form->get('label'));
+                    echo $this->formElementErrors($form->get('label'));
+                    ?>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="uri"><?php echo $this->formLabel($form->get('uri')); ?></label>
+                <div class="input-group">
+                    <?php
+                    echo $this->formElement($form->get('uri'));
+                    echo $this->formElementErrors($form->get('uri'));
+                    ?>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="route"><?php echo $this->formLabel($form->get('route')); ?></label>
+                <div class="input-group">
+                    <?php
+                    echo $this->formElement($form->get('route'));
+                    echo $this->formElementErrors($form->get('route'));
+                    ?>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="icon"><?php echo $this->formLabel($form->get('icon')); ?></label>
+                <div class="input-group">
+                    <?php
+                    echo $this->formElement($form->get('icon'));
+                    echo $this->formElementErrors($form->get('icon'));
+                    ?>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <label for="parent_menu_id"><?php echo $this->formLabel($form->get('parent_menu_id')); ?></label>
+                <div class="input-group">
+                    <?php
+                    echo $this->formElement($form->get('parent_menu_id'));
+                    echo $this->formElementErrors($form->get('parent_menu_id'));
+                    ?>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <?php
+                    echo $this->formElement($form->get('submit'));
+                    ?>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag($form); ?>    
+    </div>
+</div>
