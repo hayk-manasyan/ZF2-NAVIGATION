@@ -1,7 +1,7 @@
 ZF2-NAVIGATION Module
 ==============
 
-This module serves as a Navigation for your application. It allows you to create horizontal navbar in your ZF2 app and it suports  Twitter - Bootstrap 3. This allows you to create, edit and delete menu items, add sub items.
+This module serves as a Navigation for your application. It allows you to create horizontal navbar in your ZF2 app and it supports  Twitter - Bootstrap 3. This allows you to create, edit and delete menu items, add sub items.
 
 HOW TO INSTALL
 ==============
